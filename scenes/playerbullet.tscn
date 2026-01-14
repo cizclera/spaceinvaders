@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://ks8a08jn5434"]
+
+[ext_resource type="Script" uid="uid://bioevd0gug2hu" path="res://scripts/playerbullet.gd" id="1_7fy7u"]
+[ext_resource type="Texture2D" uid="uid://cep5qwji5wy3p" path="res://assets/spaceassets/Export/Projectiles/Variation B/Projectile_3_B.png" id="2_7fy7u"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7fy7u"]
+radius = 7.46329
+height = 52.7726
+
+[node name="playerbullet" type="Area2D"]
+z_index = -1
+collision_layer = 4
+collision_mask = 10
+script = ExtResource("1_7fy7u")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.263158, 0.258065)
+texture = ExtResource("2_7fy7u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5.68434e-14, 0)
+scale = Vector2(0.803935, 0.909563)
+shape = SubResource("CapsuleShape2D_7fy7u")
+
+[node name="life" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="life" to="." method="_on_life_timeout"]

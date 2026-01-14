@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bm3byqdheu8a"]
+
+[ext_resource type="Script" uid="uid://cjalrht3bpxbj" path="res://scripts/level1.gd" id="1_wwpf4"]
+[ext_resource type="PackedScene" uid="uid://pbnx1jtjnydo" path="res://scenes/playership.tscn" id="2_m7ahb"]
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_wwpf4")
+
+[node name="playership" parent="." instance=ExtResource("2_m7ahb")]
+position = Vector2(750, 700)
+collision_mask = 10
+
+[node name="enemyspawntimer" type="Timer" parent="."]
+wait_time = 1.25
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="EnemiesDestroyed" type="Label" parent="UI"]
+offset_left = 21.0
+offset_top = 742.0
+offset_right = 175.0
+offset_bottom = 782.0
+text = "Enemies Destroyed:"
+
+[connection signal="timeout" from="enemyspawntimer" to="." method="_on_enemyspawntimer_timeout"]

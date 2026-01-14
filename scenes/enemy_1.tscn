@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://fcgisnuxqv3n"]
+
+[ext_resource type="Script" uid="uid://b3ui611bp3llh" path="res://scripts/enemy_1.gd" id="1_a1412"]
+[ext_resource type="Texture2D" uid="uid://cpy6g320nnlk4" path="res://assets/spaceassets/Export/Enemies - Abyssal/1x/Abyssal_2_B_Medium.png" id="1_tcmaw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a1412"]
+radius = 31.0
+height = 70.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ejytf"]
+radius = 31.0
+height = 70.0
+
+[node name="enemy1" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_a1412")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_tcmaw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("CapsuleShape2D_a1412")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -3)
+shape = SubResource("CapsuleShape2D_ejytf")
+
+[node name="deathsound" type="AudioStreamPlayer2D" parent="."]
+
+[node name="enemy1shoottimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://fkj6dyt25vc7"]
+
+[ext_resource type="Script" uid="uid://dv1vxgdtb0npu" path="res://scripts/enemy_1_bullet.gd" id="1_3j7ep"]
+[ext_resource type="Texture2D" uid="uid://cjrox80ivv6u1" path="res://assets/spaceassets/Export/Projectiles/Variation E/Projectile_7_E.png" id="1_y8i3i"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3j7ep"]
+radius = 19.0
+height = 64.0
+
+[node name="enemy1bullet" type="Area2D"]
+script = ExtResource("1_3j7ep")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.263, 0.263)
+texture = ExtResource("1_y8i3i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_3j7ep")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

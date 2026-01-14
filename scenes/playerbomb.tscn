@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://yxg60fup623j"]
+
+[ext_resource type="Script" uid="uid://bbfu4jjculldq" path="res://scripts/playerbomb.gd" id="1_481ay"]
+[ext_resource type="Texture2D" uid="uid://del42s55vxbi7" path="res://assets/spaceassets/Export/Ships - Missiles - No Light/1x/Missile_1_E_Medium_NoLight.png" id="1_nanmm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_481ay"]
+size = Vector2(27.5844, 27.5788)
+
+[node name="playerbomb" type="Area2D"]
+z_index = -1
+collision_layer = 4
+collision_mask = 10
+script = ExtResource("1_481ay")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_nanmm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.0031684, -4.50317)
+rotation = 0.785662
+shape = SubResource("RectangleShape2D_481ay")
+
+[node name="bomblife" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="bomblife" to="." method="_on_bomblife_timeout"]

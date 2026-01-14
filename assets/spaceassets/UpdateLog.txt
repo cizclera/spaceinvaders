@@ -1,0 +1,33 @@
+1.6 Existing Content Update
+- All sprites have an additional "No Light" variation which no longer has the bright blue rimlight
+- Source files for the "No Light" variations added
+
+1.5 Content update, more Insect Aliens!
+- Added 4 Enemies
+- Added 2 Bosses
+- Added 1 Big Boss
+
+1.4 Project Update
+- Unity Package Included
+
+1.4 Content update, Abyssal Aliens!
+- Added 6 Enemies
+- Added 3 Bosses
+- Added 1 Big Boss
+- Added 16 Alien Parts/Particles for the Abyssal Aliens
+- All Enemies, Bosses and Alien Parts come in 4 color variations.
+
+1.3 Content update, Meteors!
+- Added 5 Meteors
+- Added 14 Particles/Meteor Chunks
+
+1.2 Content update, Insect Aliens!
+- Added 6 Enemies
+- Added 3 Bosses with Modular Body Pieces
+- Added 1 Big Boss
+- Added 16 Alien Parts/Particles for the Insect Aliens
+- All Enemies, Bosses and Alien Parts come in 2 slightly different color variations.
+
+1.1 Minor Update
+- Added New Sprites for Particles and Alien Parts
+- Updated Folder Structure
