@@ -1,3 +1,4 @@
+#handles player movement and shooting
 extends CharacterBody2D
 class_name Player
 
@@ -27,3 +28,9 @@ func shoot():
 	bullet_instance.direction = -1
 	bullet_instance.spawnpos = global_position
 	main.add_child.call_deferred(bullet_instance)
+
+
+func _on_playerarea_body_entered(body: Node2D) -> void:
+	if body is Enemy:
+		queue_free()
+		print("game over")

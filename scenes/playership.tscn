@@ -5,7 +5,7 @@
 
 [node name="playership" type="CharacterBody2D"]
 z_index = 2
-collision_mask = 26
+collision_mask = 24
 script = ExtResource("1_wy4ts")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -14,3 +14,11 @@ texture = ExtResource("1_0qht8")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-7, -36, 7, -36, 16, -12, 38, -10, 46, 35, -45, 35, -37, -10, -17, -11)
+
+[node name="playerarea" type="Area2D" parent="."]
+collision_mask = 10
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="playerarea"]
+polygon = PackedVector2Array(-7, -36, 7, -36, 16, -12, 38, -10, 46, 35, -45, 35, -37, -10, -17, -11)
+
+[connection signal="body_entered" from="playerarea" to="." method="_on_playerarea_body_entered"]

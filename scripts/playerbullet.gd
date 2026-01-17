@@ -1,3 +1,4 @@
+#handles bullet direction, status and collision with enemy
 extends Area2D
 class_name Bullet
 
@@ -6,10 +7,10 @@ var direction = -1
 
 var spawnpos : Vector2
 
-var alive : bool = true
+var bulletalive : bool = true
 
 signal hit
-signal score1
+signal score
 
 func _ready() -> void:
 	global_position = spawnpos
@@ -20,11 +21,13 @@ func _process(delta: float) -> void:
 
 
 func _on_bulletbody_entered(body: Node2D) -> void:
-	if not alive:
+	if not bulletalive:
 		return
-	body.queue_free()
-	score1.emit()
-	alive = false
+	if body is Enemy:
+		body.queue_free()
+		queue_free()
+		score.emit()
+		bulletalive = false
 
 
 func _on_bulletlifetimer_timeout() -> void:

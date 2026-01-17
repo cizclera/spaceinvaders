@@ -1,39 +1,46 @@
-[gd_scene load_steps=3 format=3 uid="uid://dndwwww8deimi"]
+[gd_scene load_steps=5 format=3 uid="uid://dndwwww8deimi"]
 
+[ext_resource type="Script" uid="uid://bvqmjhhptwb3r" path="res://scripts/main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bh2cpfl1isn7o" path="res://scenes/playership.tscn" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://di6lgjjon7b4w" path="res://scripts/walls.gd" id="3_sugp2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gkh53"]
 size = Vector2(20, 648)
 
 [node name="main" type="Node2D"]
+script = ExtResource("1_0wfyh")
 
 [node name="playership" parent="." instance=ExtResource("1_o5qli")]
 position = Vector2(500, 449)
 
-[node name="leftborder" type="StaticBody2D" parent="."]
+[node name="walls" type="Node2D" parent="."]
+position = Vector2(1000, 0)
+script = ExtResource("3_sugp2")
+
+[node name="leftborder" type="StaticBody2D" parent="walls"]
+position = Vector2(-1000, 0)
 collision_layer = 16
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="leftborder"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/leftborder"]
 position = Vector2(0, 324)
 shape = SubResource("RectangleShape2D_gkh53")
 
-[node name="ColorRect" type="ColorRect" parent="leftborder"]
+[node name="ColorRect" type="ColorRect" parent="walls/leftborder"]
 offset_left = -10.0
 offset_right = 10.0
 offset_bottom = 648.0
 color = Color(0.500545, 0.367734, 0.972351, 1)
 
-[node name="rightborder" type="StaticBody2D" parent="."]
-position = Vector2(1000, 0)
+[node name="rightborder" type="StaticBody2D" parent="walls"]
 collision_layer = 16
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="rightborder"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/rightborder"]
 position = Vector2(0, 324)
 shape = SubResource("RectangleShape2D_gkh53")
 
-[node name="ColorRect" type="ColorRect" parent="rightborder"]
+[node name="ColorRect" type="ColorRect" parent="walls/rightborder"]
 offset_left = -10.0
 offset_right = 10.0
 offset_bottom = 648.0
