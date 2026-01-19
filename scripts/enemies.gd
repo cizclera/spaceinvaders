@@ -1,12 +1,24 @@
+# parent class for all enemies
 extends CharacterBody2D
 class_name Enemy
 
+# sets health, status and count variables for enemies
+var health: int = 100
+var alive : bool = true
+var enemycount : int = 15
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
-	pass # Replace with function body.
+	add_to_group("enemies")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+# when takes damage
+func takedamage(amount: int):
+	health -= amount
+
+
+# when enemy dies
+func ondeath():
+	get_parent().enemydied()
+	queue_free()
+	alive = false

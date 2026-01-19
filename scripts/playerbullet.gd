@@ -9,8 +9,6 @@ var spawnpos : Vector2
 
 var bulletalive : bool = true
 
-signal hit
-signal score
 
 func _ready() -> void:
 	global_position = spawnpos
@@ -20,14 +18,16 @@ func _process(delta: float) -> void:
 	position.y += speed * direction * delta
 
 
+#handles interaction with enemy
 func _on_bulletbody_entered(body: Node2D) -> void:
 	if not bulletalive:
 		return
 	if body is Enemy:
-		body.queue_free()
 		queue_free()
-		score.emit()
 		bulletalive = false
+		body.takedamage(50)
+		if body.health <= 0:
+			body.ondeath()
 
 
 func _on_bulletlifetimer_timeout() -> void:
