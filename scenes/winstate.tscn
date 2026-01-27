@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://1s2tv6yaj7xc"]
+
+[ext_resource type="Script" uid="uid://cjlbq8l3tjvuv" path="res://scripts/winstate.gd" id="1_04ijd"]
+
+[node name="winstate" type="Node2D"]
+script = ExtResource("1_04ijd")
+
+[node name="youwon" type="Label" parent="."]
+offset_left = 306.0
+offset_top = 236.0
+offset_right = 689.0
+offset_bottom = 395.0
+theme_override_font_sizes/font_size = 71
+text = "YOU WON!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="restartmenu" type="Button" parent="."]
+offset_left = 415.0
+offset_top = 407.0
+offset_right = 581.0
+offset_bottom = 462.0
+text = "Menu"
+
+[connection signal="pressed" from="restartmenu" to="." method="_on_restartmenu_pressed"]

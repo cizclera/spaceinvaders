@@ -1,4 +1,4 @@
-# handles enemy group movement
+# handles enemy group movement for Level 1
 extends Node2D
 class_name Level1
 
@@ -13,6 +13,8 @@ var drop : int = 30
 
 var enemycount : int = 0
 
+var groupmove : bool = true
+
 signal levelcomplete
 
 
@@ -22,18 +24,20 @@ func _ready() -> void:
 	print("Level starting with ", enemycount, " enemies")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+# group movement
 func _process(delta: float) -> void:
-	global_position.x += SPEED * DIR * delta
-	if global_position.x <= leftlimit:
-		DIR = 1
-		global_position.y += drop
+	if groupmove:
+		global_position.x += SPEED * DIR * delta
+		if global_position.x <= leftlimit:
+			DIR = 1
+			global_position.y += drop
 		
-	if global_position.x >= rightlimit:
-		DIR = -1
-		global_position.y += drop
+		if global_position.x >= rightlimit:
+			DIR = -1
+			global_position.y += drop
 
 
+# on death (collision with player bullet)
 func enemydied():
 	enemycount -= 1
 	print("Enemies remaining: ", enemycount)
@@ -41,6 +45,13 @@ func enemydied():
 		level_complete()
 
 
+# when all enemies are finished
 func level_complete():
 	print("level completed!")
 	levelcomplete.emit()
+
+
+func _on_level_coll_area_body_entered(body: Node2D) -> void:
+	if body is Player:
+		print("player eliminated")
+		groupmove = false

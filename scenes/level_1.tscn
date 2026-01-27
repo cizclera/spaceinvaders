@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctm8ne1r5oubu"]
+[gd_scene load_steps=4 format=3 uid="uid://ctm8ne1r5oubu"]
 
 [ext_resource type="PackedScene" uid="uid://c8d5uvvvimeev" path="res://scenes/enemy_1.tscn" id="1_014kd"]
 [ext_resource type="Script" uid="uid://350u5jolwjvw" path="res://scripts/level_1.gd" id="1_bswci"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bswci"]
+size = Vector2(472, 144)
 
 [node name="level1" type="Node2D"]
 script = ExtResource("1_bswci")
@@ -35,3 +38,12 @@ position = Vector2(-98, 46)
 
 [node name="enemy1" parent="." instance=ExtResource("1_014kd")]
 position = Vector2(-198, 46)
+
+[node name="level_coll_area" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level_coll_area"]
+position = Vector2(2, 1)
+shape = SubResource("RectangleShape2D_bswci")
+
+[connection signal="body_entered" from="level_coll_area" to="." method="_on_level_coll_area_body_entered"]

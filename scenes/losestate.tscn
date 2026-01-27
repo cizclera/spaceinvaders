@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://fbb0u7bvccey"]
+
+[ext_resource type="Script" uid="uid://drxacbjd48wwa" path="res://scripts/losestate.gd" id="1_gnka5"]
+
+[node name="losestate" type="Node2D"]
+script = ExtResource("1_gnka5")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 295.0
+offset_top = 279.0
+offset_right = 701.0
+offset_bottom = 374.0
+theme_override_font_sizes/font_size = 41
+text = "Perimeter Breached"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="restartmenu" type="Button" parent="."]
+offset_left = 404.0
+offset_top = 395.0
+offset_right = 594.0
+offset_bottom = 437.0
+text = "Main Menu"
+
+[connection signal="pressed" from="restartmenu" to="." method="_on_restartmenu_pressed"]
