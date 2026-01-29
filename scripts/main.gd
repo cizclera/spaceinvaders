@@ -26,7 +26,7 @@ func startgame():
 func spawnlevel1():
 	var level1instance = level1.instantiate()
 	level1instance.position.x = 500
-	level1instance.position.y = 500
+	level1instance.position.y = 100
 	add_child(level1instance)
 	level1instance.levelcomplete.connect(on_level_complete)
 
