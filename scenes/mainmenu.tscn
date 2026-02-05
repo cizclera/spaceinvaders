@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bqvsjwrv3w5ma" path="res://scripts/mainmenu.gd" id="1_5mbse"]
 
 [node name="Control" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_5mbse")
 
 [node name="ColorRect" type="ColorRect" parent="."]

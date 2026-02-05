@@ -21,6 +21,7 @@ func startgame():
 	gameover = false
 	$winstate.hide()
 	$losestate.hide()
+	get_tree().paused = false
 
 
 func spawnlevel1():
@@ -47,5 +48,5 @@ func stopgame_lose():
 	levelrunning = false
 	gameover = true
 	$playership.canmove = false
-	$losestate.show()
 	get_tree().paused = true
+	$losestate.show()

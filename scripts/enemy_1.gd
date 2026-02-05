@@ -12,7 +12,4 @@ func _init() -> void:
 
 
 func _on_ebullet_timer_timeout() -> void:
-	if canshoot:
-		shoot()
-	else:
-		$ebullet_timer.stop()
+	shoot()
