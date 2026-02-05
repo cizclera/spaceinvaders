@@ -1,6 +1,6 @@
-#handles bullet direction, status and collision with enemy
+# handles bullet direction, status and collision with enemy
 extends Area2D
-class_name Bullet
+class_name PlayerBullet
 
 @export var speed = 300
 var direction = -1
@@ -18,11 +18,11 @@ func _process(delta: float) -> void:
 	position.y += speed * direction * delta
 
 
-#handles interaction with enemy
+# handles interaction with enemy, triggers enemy health loss and death
 func _on_bulletbody_entered(body: Node2D) -> void:
 	if not bulletalive:
 		return
-	if body is Enemy:
+	if body is Enemy or body is EnemyBullet:
 		queue_free()
 		bulletalive = false
 		body.takedamage(50)

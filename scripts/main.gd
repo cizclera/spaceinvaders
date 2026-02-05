@@ -48,3 +48,4 @@ func stopgame_lose():
 	gameover = true
 	$playership.canmove = false
 	$losestate.show()
+	get_tree().paused = true

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://drxacbjd48wwa" path="res://scripts/losestate.gd" id="1_gnka5"]
 
 [node name="losestate" type="Node2D"]
+z_index = 2
 script = ExtResource("1_gnka5")
 
 [node name="Label" type="Label" parent="."]

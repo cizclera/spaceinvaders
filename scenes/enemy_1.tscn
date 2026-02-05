@@ -19,3 +19,7 @@ texture = ExtResource("1_tcmaw")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_a1412")
+
+[node name="ebullet_timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="ebullet_timer" to="." method="_on_ebullet_timer_timeout"]

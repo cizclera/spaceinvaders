@@ -20,6 +20,10 @@ signal levelcomplete
 
 # counts number of enemies at level start
 func _ready() -> void:
+	call_deferred("countenemies")
+
+
+func countenemies():
 	enemycount = get_tree().get_nodes_in_group("enemies").size()
 	print("Level starting with ", enemycount, " enemies")
 

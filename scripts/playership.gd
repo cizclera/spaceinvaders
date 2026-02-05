@@ -7,7 +7,6 @@ class_name Player
 
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
 
 var canmove : bool = true
 
@@ -33,8 +32,16 @@ func shoot():
 
 
 func _on_playerarea_body_entered(body: Node2D) -> void:
-	if body is Enemy:
-		# queue_free()
+	if body is Enemy or body is EnemyBullet:
+		queue_free()
+		print("game over")
+		canmove = false
+		get_parent().stopgame_lose()
+
+
+# detects collision with enemybullet
+func _on_playerarea_area_entered(area: Area2D) -> void:
+	if area is EnemyBullet:
 		print("game over")
 		canmove = false
 		get_parent().stopgame_lose()
